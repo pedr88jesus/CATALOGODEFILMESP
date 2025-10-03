@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link> rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Catalogos de Filmes</h1>
+<form id="cadastro-filmes"> 
+<h2>Adicionar Novos Filmes</h2>
+<div>
+<label for="titulo">Titulo do Filme:</label>
+<input type="text" id="titulo" required>
+</div>
+
+<div>
+<label for="sinops">Sinopse</label>
+<textarea id="sinopse" required ></textarea>
+</div>
+<button type="submit"> Adicionar Filme</button>
+</form>
+<hr>
+
+<h2>minha LIstade Filmes</h2>
+
+<div id="lista-filmes"> 
+    <p> Nenhum filmes cadastro ainda.</p>
+</div>
+  
+<script>
+// 1. armazenarr de dados
+// Array global que ira guarda todos os filmes como objetos
+// ex [{titulo: Filme X , sinopse: 'sinopse y'}]
+const  Catalogos = [];
+
+// 2. captura de elementos do dom (document object model)
+// capturamos os elementos HTML que vamos interagir usando seus 10s
+const form = document.getElementById('cadastro-filme');
+const listaFilmesContainer = document.getElementById('list-filmes');
+
+//----------------------
+// FUNÇÃO DE REMOÇÃO
+// ---------------------
+/**
+* Remove um filme do array de dados e do elemento HTML na tela.
+*@param {number} indice - A posição do filme no array 'catalogo'
+*@param {HTMLElement} elementoDOM - O elemento <div> do filme a ser removido da tela
+*/
+
+function removerFilme(indice, elementoDOM) {
+// A. REMOÇÃO DO ARRAY (Lógica)
+// splice(indice, 1) remove 1 elemento a partir da posição 'indice'.
+// Isso atualiza o array 'catalogo' 
+Catalogos.splice(indice, 1);
+
+}
+</script>
+
+
+
+</body>
+</html>
