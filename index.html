@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogos de Filmes</title>
+    <title>Catálogos de Filmes- fasec 2: comsumo de API</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
 <body>
     <h1>Catálogos de Filmes</h1>
     <form id="cadastro-filmes"> 
-        <h2>Adicionar Novos Filmes</h2>
+        <h2>Adicionar Novos Filmes (busca por API)</h2>
         <div>
             <label for="titulo">Título do Filme:</label>
             <input type="text" id="titulo" required>
@@ -21,7 +21,7 @@
             <label for="sinopse">Sinopse:</label>
             <textarea id="sinopse" required></textarea>
         </div>
-        <button type="submit">Adicionar Filme</button>
+        <button type="submit">buscar Adicionar Filme</button>
     </form>
     <hr>
 
@@ -32,11 +32,13 @@
     </div>
 
     <script>
-        // 1. Armazenar os dados
+        // a chave secreta da api omdb (sustitue esta string pels sua chave real)
+        const API_KEY = '72dcf75a';
         const catalogo = []; // Array global para armazenar filmes
 
         // 2. Captura dos elementos do DOM
         const form = document.getElementById('cadastro-filmes');
+        const tituloInput = dicument.getElementById('listas-filmes');
         const listaFilmesContainer = document.getElementById('lista-filmes');
 
         //----------------------
@@ -58,7 +60,7 @@
             if (catalogo.length === 0) {
                 listaFilmesContainer.innerHTML = '<p>Nenhum filme cadastrado ainda.</p>';
             }
-            console.log(`Filme no índice ${indice} removido. Catálogo atualizado:`, catalogo);
+            
         }
 
         //----------------------
@@ -79,7 +81,22 @@
             const filmeDiv = document.createElement('div');
             filmeDiv.classList.add('filme-item'); // Adiciona uma classe para estilização
 
-            const tituloH3 = document.createElement('h3');
+            // a elemento imagem (poster)
+const imagemPoster = document.createElement('img');
+imagemPoster.src = filme.poster && filme.poster == 'N/A'
+           / filme.poster 
+           : 'https':
+imagemPoster.alt = 'pôster do filme ${filme.titulo}';
+imagemPoster.classList.add('filme-info');
+
+// b elementos de textto e info
+const infoDiv = document.createElement('div');
+infoDiv.classList.add('filme-info');
+
+
+
+
+const tituloH3 = document.createElement('h3');
             tituloH3.textContent = filme.titulo;
 
             const sinopseP = document.createElement('p');
